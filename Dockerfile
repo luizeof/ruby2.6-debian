@@ -25,7 +25,6 @@ RUN apt update && \
     rsync \
     python \
     python-pip \
-    iproute \
     jq \
     git \
     nodejs \
