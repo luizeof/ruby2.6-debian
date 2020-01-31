@@ -34,7 +34,7 @@ RUN apt update && \
     htop \
     nano \
     tzdata \
-    && apt-get cleanup
+    && apt-get clean
 
 RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
