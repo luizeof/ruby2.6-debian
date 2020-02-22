@@ -1,11 +1,10 @@
 FROM ruby:2.6.5-slim
 
 LABEL version="1.0"
+
 LABEL name="Nick Janetakis <nick.janetakis@gmail.com>"
 
 RUN export DEBIAN_FRONTEND=noninteractive
-
-ENV AWS_REGION "us-east-1"
 
 ENV RAILS_ENV=production \
     RACK_ENV=production
