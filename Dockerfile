@@ -46,7 +46,9 @@ RUN apt update && \
 
 RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
 
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
