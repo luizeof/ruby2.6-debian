@@ -14,8 +14,13 @@ RUN apt update && \
     default-libmysqlclient-dev \
     cron \
     vim \
+    libgmp-dev \
+    libssl-dev \
+    git-core \
+    openssl \
     less \
     net-tools \
+    sudo \
     telnet \
     socat \
     dnsutils \
@@ -27,14 +32,18 @@ RUN apt update && \
     python-pip \
     jq \
     git \
-    nodejs \
     software-properties-common \
     supervisor \
     rsync \
     htop \
     nano \
     tzdata \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sL https://deb.nodesource.com/setup_13.x | bash -
+
+RUN apt-get install -y nodejs
 
 RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
@@ -45,6 +54,12 @@ RUN gem update --system
 RUN echo 'gem: --no-document' >> ~/.gemrc
 
 RUN gem update
+
+RUN gem install nokogiri -v '1.10.7'
+
+RUN gem install bundler:1.17.3
+
+RUN gem install bundler procodile whenever tzinfo tzinfo-data
 
 RUN gem install bundler foreman procodile whenever tzinfo tzinfo-data \
     && gem cleanup
